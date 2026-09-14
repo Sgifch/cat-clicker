@@ -1,16 +1,23 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Zenject;
 
 public class CatClick : MonoBehaviour, IPointerClickHandler
 {
-    public GameObject hit;
-    public bool onClick;
+    public GameManager _gameManager;
+
+
+    [Inject]
+    public void Construct(GameManager gameManager)
+    {
+        _gameManager = gameManager;
+    }
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("Click");
-        hit.GetComponent<Collider2D>().enabled = true;
-        hit.GetComponent<Collider2D>().enabled = false;
+        //Что-то там сделать
+        _gameManager.CountChange();
     }
 
 }
