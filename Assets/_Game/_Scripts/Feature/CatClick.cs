@@ -6,6 +6,7 @@ using Zenject;
 public class CatClick : MonoBehaviour, IPointerClickHandler
 {
     public GameManager _gameManager;
+    public Hit hit;
 
 
     [Inject]
@@ -16,8 +17,12 @@ public class CatClick : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("Click");
-        //Что-то там сделать
-        _gameManager.CountChange();
+        if (hit.hitObject != null)
+        {
+            _gameManager.CountChange();
+            hit.hitObject.GetComponent<ITargetActivate>().TargetActivate();
+            hit.hitObject = null;
+        }
     }
 
 }
