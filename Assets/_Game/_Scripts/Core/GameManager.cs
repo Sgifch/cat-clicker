@@ -1,4 +1,5 @@
 using UnityEngine;
+using YG;
 using Zenject;
 
 public class GameManager : MonoBehaviour
@@ -19,8 +20,8 @@ public class GameManager : MonoBehaviour
         //мб потом поменять доступ через интерфейс
         if (hit.GetComponent<Hit>().hitObject != null)
         {
-            _value.valueCount += hit.GetComponent<Hit>().hitObject.GetComponent<Target>().bonus;
-            _hudManager.ChangeCount(_value.valueCount);
+            YG2.saves.coins += hit.GetComponent<Hit>().hitObject.GetComponent<Target>().bonus;
+            _hudManager.ChangeCount(YG2.saves.coins);
         }
     }
 }

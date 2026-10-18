@@ -9,14 +9,9 @@ public class MainSceneInstaller : MonoInstaller
 
     public BoxCollider2D area;
     public GameObject targetList;
-    //public Transform hit;
-    //public TextMeshPro count;
 
     public override void InstallBindings()
     {
-        //Container.BindInstance(hit).AsSingle();
-        //Container.Bind<TextMeshPro>().WithId("Count").FromInstance(count).AsSingle();
-        //Container.BindInstance(hit).AsSingle();
 
         Container.Bind<Value>().AsSingle();
 
@@ -24,5 +19,7 @@ public class MainSceneInstaller : MonoInstaller
         Container.BindInstance(targetList).AsSingle();
         Container.BindInstance(hudManager).AsSingle();
         Container.BindInstance(gameManàger).AsSingle();
+
+        hudManager.LoadUI();
     }
 }
